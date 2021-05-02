@@ -1,0 +1,252 @@
+modes:
+  unranked:
+    selector:
+      title: "&bJoin Unranked"
+    templates:
+      title: "&a{mode} &7({mode_aux})"
+      desc: |-
+        &eIn queue: &a{queue}
+        &eIn match: &a{match}
+
+        &eClick to join the unranked queue for &a{mode} {mode_aux}&e.
+  ranked:
+    selector:
+      title: "&bJoin Ranked"
+    templates:
+      title: "&a{mode} &7({mode_aux})"
+      desc: |-
+        &eIn queue: &a{queue}
+        &eIn match: &a{match}
+
+        &eClick to join the ranked queue for &a{mode} {mode_aux}&e.
+
+leaderboard:
+  title: "&aLeaderboards"
+  entry:
+    title: "&e{mode}"
+    desc: |-
+      &e{mode} top elo:{entries}
+      $.entries=\n&8- &7#{rank} {player} ({elo})
+mode:
+  selector:
+    title: "&eSelect mode"
+    mode:
+      title: "&e{mode}"
+      desc: |-
+        &7Choose this mode.
+
+arena:
+  selector:
+    title: "&eSelect arena"
+    arena:
+      title: "&e{arena}"
+      desc: |-
+        &7Select this arena.
+
+kit:
+  selector:
+    title: "&eSelect mode"
+    mode:
+      title: "&e{mode}"
+      desc: |-
+        &7Click to edit your {mode} kits.
+  choose:
+    title: "&a{name}"
+    desc: |-
+      &7Right click to select this kit for the match.
+  selected: "&aKit '{name}' selected for match."
+  saved: "&aKit '{name}' saved."
+  deleted: "&2Kit '{name}' deleted."
+  rename:
+    prompt: "&7Please enter a new name for your kit '{name}'. Type '!' to cancel."
+    invalid: "&cKit name invalid, rename cancelled."
+    done: "&aKit renamed. &7({previous} -> {new})"
+
+join:
+  in-queue: "&6You are already in queue for a match."
+  elo-increase: "&7Increased elo range for ranked queue, now at {range}."
+  queue-left: "&eYou left the queue."
+  not-in-queue: "&7You are not in queue."
+  queued:
+    unranked: "&aYou are now in queue for a {mode} match."
+    ranked: "&aYou are now in a ranked queue for a {mode} match."
+  found: |-
+    &aMatch found.
+    &3Your team: &b{team}
+    &3Opponents: &b{opponents}
+
+duel:
+  missing-target: "&cPlease specify which player you want to duel."
+  offline-target: "&cTarget is offline"
+  target-yourself: "&cYou cannot duel yourself."
+  no-request: "&cThe duel request has expired."
+  target-in-match: "&cTarget is already in match, try again later."
+  sender-in-match: "&cSender is now in match. The duel request is no longer valid."
+  request:
+    sender: "&aDuel request sent to &e{target}&a."
+    target: |-
+      &3Incoming duel request from &b{sender} &7({mode})&3.
+      |#|&a[Accept];/duel accept {sender};Click to accept {sender}'s duel|#| |#|&c[Deny];/duel deny {sender};Click to deny {sender}'s duel|#|
+    accepted:
+      sender: "&aYour duel request to {target} was accepted."
+      target: "&aYou accepted {sender}'s duel request."
+    denied:
+      sender: "&cYour duel request to {target} was denied."
+      target: "&aYou denied the duel request from {sender}."
+
+party:
+  chat:
+    entry: "&dPARTY &f&l| &a{player}&7: &f{message}"
+    none: "&7You are not in a party."
+  leader-quit: "&7The leader {previous-leader} has disconnected. The party leadership was given to {new-leader}."
+  player-left-queue: "&7Party player &a{player} &7left the queue."
+  quit: "&a{player} &7disconnected, they were expelled from the party."
+  start-not-leader: "&cYou must be the leader to start a party match."
+  event:
+    not-enough-players: "&cNot enough players in the party to start this event."
+  command:
+    invalid-usage: "&cInvalid command usage. Please see /{label} help."
+    errors:
+      none: "&cYou are not in a party."
+      already: "&cYou are already in a party."
+      missing-target: "&cPlease specify a target player."
+      target-no-party: "&cThe player is not in a party."
+      target-in-this-party: "&cTarget is already in the party."
+      target-not-in-party: "&cThis player is not in the party."
+      target-yourself: "&cYou cannot target yourself."
+      no-target: "&cTarget not found."
+      not-found: "&cParty command not found. Type '/party help' for help."
+      not-leader: "&cYou must be the leader of the party to use this command."
+    help: |-
+      /{label} create - Create a party
+      /{label} leave - Leave your party
+      /{label} info <player> - Get player's party info
+      /{label} open - Open your party to the public
+      /{label} kick <player> - Kick a player from the party
+      /{label} lead <player> - Transfer the party's leadership
+      /{label} disband - Disband the party
+      /{label} invite <player> - Invite a player to your party
+      /{label} join <player> - Join player's party
+      /{label} help - Show this help menu
+    info: |-
+      &3Leader: &b{leader}
+
+      &3Party members: &b{members}
+      &3Party players: &b{players}
+      &fJust demonstrating you can use either players or members placeholder
+    join:
+      already: "&cYou are already in this party."
+      not-invited: "&cYou were not invited to this party or the invite has expired."
+      success: "&aYou joined the party with success."
+      success-alert: "&a{player} &7joined the party."
+    create:
+      success: "&aYou created a new party."
+    open:
+      already: "&7The party is already open to the public."
+      broadcast: "|#|&a{player}'s party is now open!;/party join {player};Click join {player}'s party|#|"
+    lead:
+      success-alert: "&a{new} &7is now the party leader."
+    kick:
+      success-target: "&cYou were kicked out of the party by {sender}."
+      success-alert: "&e{target} &7was kicked out of the party by &a{sender}&7."
+    disband:
+      success-alert: "&cThe party was disbanded."
+    leave:
+      leader: "&cYou are the party leader. Please use '/party disband' to disband the party."
+      success: "&aYou left the party."
+      success-alert: "&a{player} &7left the party."
+    invite:
+      success: "&aYou invited {target} to your party."
+      success-target: |-
+        &bYou have been invited to join {sender}'s party.
+        |#|&a[Accept];/party join {sender};Click to join {sender}'s party|#| &7or ignore this message.
+tournament:
+  match-end: |-
+    &eA match has ended, players going to next round are:{players}
+    $.players=\n&8- &a{player}
+  round:
+    start: "&aLet round &2{round} begin!"
+    end: "&eRound &6{round} &ehas ended."
+  end: "&aTournament ended! The winners are &2{winners}&a."
+
+match:
+  create:
+    failed:
+      arena: "&4(ERR) &cCould not find an arena to play on for this match mode."
+      missing-spawn: "&4(ERR) &cNot enough spawn points in this arena to start a match."
+      duplicate: "&4(ERR) &cA player would have been fighting on both teams."
+  game:
+    start-timer: "&aThe match will start in &e{seconds} &aseconds."
+    started: "&aThe match begins. Good luck."
+    damage:
+      bow: "&e{target} &7has &d{health} HP &8({hearts} hearts)&7."
+    death:
+      killed: "&7Player &e{victim} &7was killed by &e{killer}&7."
+      killed-no-killer: "&7Player &e{victim} &7died."
+      forfeit: "&7Player &e{victim} &7disconnected."
+    enderpearl-cooldown: "&cPlease wait &e{seconds} seconds&c."
+  end: |-
+    &3Match finished.
+    &bWinners: {winners}
+    &bLosers: {losers}
+    $.winners=|#|&a{player};/matchstats {stats-id};&eClick to see {player}'s match stats|#|<,>&8, 
+    $.losers=|#|&c{player};/matchstats {stats-id};&eClick to see {player}'s match stats|#|<,>&8, 
+  stats:
+    invalid-uuid: "&cThis command should not be used manually."
+    expired: "&cThese stats can no longer be displayed."
+
+command:
+  spawn:
+    done: "&7You've been teleported back to spawn."
+  spectate:
+    in-match: "&cYou are in a match, you cannot spectate another game."
+    missing-target: "&cMissing target."
+    offline-target: "&cTarget player not found."
+    target-not-in-match: "&cTarget not in match."
+    done: "&aNow spectating {target}'s match."
+  elo:
+    offline-target: "&cTarget player not found."
+    show: "&a{target}'s global elo is &2{elo}&a."
+  ping:
+    offline-target: "&cTarget player not found."
+    show: "&a{target}'s ping is &e{ping}&a."
+
+scoreboard:
+  title: "&6Practice"
+  spacer: "&f-------------"
+  spawn:
+    content: |-
+      ${scoreboard.spacer}
+      &7Online: &b{online}
+      &7In fight: &b{fighting}
+
+      &7You:
+      &b{elo} ELO
+      &b{kdr} K/D
+      ${scoreboard.spacer}
+      &eabc.abc.abc
+  game:
+    unranked: "Unranked"
+    ranked: "Ranked"
+    content: |-
+      ${scoreboard.spacer}
+      &7Match:
+      &a{mode} &7({mode_aux})
+      &f{ranked}
+
+      &7Ping: &a{ping} ms
+      &7Opponents: {opponents}
+
+      ${scoreboard.spacer}
+      &eabc.abc.abc
+      $.opponents=\n&8- &c{player} &7({ping} ms)
+  spectate:
+    content: |-
+      ${scoreboard.spacer}
+      &7Match:
+      &a{mode} &7({mode_aux})
+      &f{ranked}
+
+      &dYou are spectating.
+      ${scoreboard.spacer}
+      &eabc.abc.abc

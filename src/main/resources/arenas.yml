@@ -1,0 +1,26 @@
+Industrial:
+  icon:
+    type: WOOL
+    type-data: 7
+  schematic: schematics/Industrial.schematic
+  spawn-block:
+    type: STAINED_CLAY
+    replace: WOOL
+
+Wood:
+  icon:
+    type: WOOD
+  schematic: schematics/Wood.schematic
+  spawn-block:
+    type: STAINED_CLAY
+    replace: STONE
+
+Fountain:
+  icon:
+    type: WATER_BUCKET
+  schematic: schematics/Fountain.schematic
+  spawn-block:
+    type: SPONGE
+    replace: STONE
+  center-block:
+    replace: WOOD

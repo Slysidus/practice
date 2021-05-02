@@ -1,0 +1,54 @@
+name: Practice
+version: ${version}
+author: Izmoqwy
+
+main: com.oxymore.practice.Practice
+#depend: [ProtocolLib]
+
+commands:
+  spawn:
+    description: Teleport to spawn
+  ping:
+    description: Get someone's ping
+  elo:
+    permission: oxymore.practice.command.elo
+    description: Get a player's elo
+
+  duel:
+    permission: oxymore.practice.command.duel
+    description: Duel a player
+  spectate:
+    permission: oxymore.practice.command.spectate
+    aliases: [spec]
+    description: Spectate
+  matchstats:
+    description: See final match stats of a player you last fought
+
+  party:
+    permission: oxymore.practice.command.party
+    aliases: [p]
+    description: Play with a group of people
+  leaderboard:
+    permission: oxymore.practice.command.leaderboard
+    aliases: [leaderboards]
+    description: Open the leaderboards
+  tournament:
+    permission: oxymore.practice.command.tournament
+    description: Launch a tournament
+
+permissions:
+  oxymore.practice.spawn-fly:
+    description: Automatically enable fly at spawn
+    default: op
+  oxymore.practice.select-arena:
+    description: Choose the arena when starting a match
+  oxymore.practice.command.*:
+    default: true
+    children:
+      oxymore.practice.command.tournament:
+        default: op
+      oxymore.practice.command.party: true
+      oxymore.practice.command.leaderboard: true
+      oxymore.practice.command.spectate: true
+      oxymore.practice.command.duel: true
+      oxymore.practice.command.elo: true

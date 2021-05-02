@@ -1,0 +1,272 @@
+#######
+# HUD #
+#######
+
+player_default:
+  layout:
+    - slot: 0
+      action: join-unranked
+      type: IRON_SWORD
+      title: "&bJoin an Unranked Queue"
+      description: "&7Right click to join an unranked queue"
+    - slot: 1
+      action: join-ranked
+      type: DIAMOND_SWORD
+      title: "&bJoin a Ranked Queue"
+      description: "&7Right click to join a ranked queue"
+    - slot: 2
+      if: in-queue
+      action: leave-queue
+      type: REDSTONE
+      title: "&cLeave queue"
+      description: "&7Right click to leave queue"
+    - slot: 4
+      action: party-create
+      type: NETHER_STAR
+      title: "&aCreate party"
+      description: "&7Right click to create a party"
+    - slot: 7
+      action: edit-kits
+      type: ANVIL
+      title: "&bEdit kits"
+      description: "&7Right click to edit kits"
+    - slot: 8
+      action: open-leaderboard
+      type: EMERALD
+      title: "&dView Leaderboards"
+      description: |-
+        &7Right click to view leaderboards.
+
+        &dTop 10 global players:{entries}
+        $.entries=\n&8- &7#{rank} {player} ({elo})
+
+player_party:
+  layout:
+    - slot: 0
+      if: leader
+      action: join-unranked
+      type: IRON_SWORD
+      title: "&bJoin an Unranked Queue"
+      description: "&7Right click to join an unranked queue"
+    - slot: 1
+      if: leader
+      action: join-ranked
+      type: DIAMOND_SWORD
+      title: "&bJoin a Ranked Queue"
+      description: "&7Right click to join a ranked queue"
+    - slot: 2
+      if: leader && in-queue
+      action: leave-queue
+      type: REDSTONE
+      title: "&cLeave queue"
+      description: "&7Right click to leave queue"
+    - slot: 4
+      if: leader
+      action: party-event
+      type: GOLD_AXE
+      title: "&5Start a Party Event"
+      description: "&7Right click to start a party event"
+    - slot: 7
+      action: party-info
+      type: PAPER
+      title: "&2Party info"
+      description: "&7Right click to view party information"
+    - slot: 8
+      if: "!leader"
+      action: party-leave
+      type: BONE
+      title: "&cLeave party"
+      description: "&7Right click to leave the party"
+    - slot: 8
+      if: leader
+      action: party-disband
+      type: BONE
+      title: "&cDisband party"
+      description: "&7Right click to disband the party"
+
+#######
+# GUI #
+#######
+
+gui_select-aux:
+  rows: 3
+  layout:
+    - slot: 12
+      action: 1v1
+      type: DIAMOND_SWORD
+      title: "&31v1"
+      description: "&7Show 1v1 matches."
+    - slot: 14
+      action: 2v2
+      type: DIAMOND_SWORD
+      title: "&32v2"
+      description: "&7Show 2v2 matches."
+
+gui_select-event:
+  rows: 3
+  layout:
+    - slot: 12
+      action: split
+      type: GOLD_AXE
+      title: "&eSplit"
+      description: "&7Start a Split party match."
+    - slot: 14
+      action: ffa
+      type: IRON_AXE
+      title: "&eFFA"
+      description: "&7Start a FFA party match."
+
+gui_edit-kits:
+  rows: 3
+  layout:
+    - slot: 11
+      if: kit-1-exists
+      action: kit-1
+      type: BOOK
+      title: "&aEdit '{kit-1-name}'"
+      description: "&7Click to edit this {mode} kit."
+    - slot: 11
+      if: "!kit-1-exists"
+      action: kit-1
+      type: BOOK_AND_QUILL
+      title: "&aNew kit ({kit-1-name})"
+      description: "&7Click to create this {mode} kit."
+    - slot: 13
+      if: kit-2-exists
+      action: kit-2
+      type: BOOK
+      title: "&aEdit '{kit-2-name}'"
+      description: "&7Click to edit this {mode} kit."
+    - slot: 13
+      if: "!kit-2-exists"
+      action: kit-2
+      type: BOOK_AND_QUILL
+      title: "&aNew kit ({kit-2-name})"
+      description: "&7Click to create this {mode} kit."
+    - slot: 15
+      if: kit-3-exists
+      action: kit-3
+      type: BOOK
+      title: "&aEdit '{kit-3-name}'"
+      description: "&7Click to edit this {mode} kit."
+    - slot: 15
+      if: "!kit-3-exists"
+      action: kit-3
+      type: BOOK_AND_QUILL
+      title: "&aNew kit ({kit-3-name})"
+      description: "&7Click to create this {mode} kit."
+
+gui_edit-kit:
+  # the 4 last rows are used for the items
+  rows: 6
+  layout:
+    - slot: 0
+      action: delete
+      type: WOOL
+      type-data: 14
+      title: "&cDelete '{name}'"
+      description: |-
+        &7Click to delete this kit.
+        &cNo confirmation will be asked.
+    - slot: 1
+      action: rename
+      type: SIGN
+      title: "&eRename '{name}'"
+      description: |-
+        &7Click to rename this kit.
+        &7You will be prompted a new name in the chat.
+        &cCurrent changes will be discarded.
+    - slot: 2
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 7
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 8
+      action: save-and-close # 'save' works as well, without closing the GUI
+      type: WOOL
+      type-data: 13
+      title: "&aSave '{name}'"
+      description: |-
+        &7Click to save this kit and close.
+    - slot: 9
+      action: close
+      type: REDSTONE
+      title: "&cClose"
+      description: |-
+        &7Stop editing this kit.
+        &cCurrent changes will be discarded.
+    - slot: 10
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 11
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 12
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 13
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 14
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 15
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 16
+      type: STAINED_GLASS_PANE
+      type-data: 8
+      title: "&8*"
+    - slot: 17
+      action: destroy-item
+      type: FIREBALL
+      title: "&6Destroy item"
+      description: |-
+        &7Click with an item selected to destroy it.
+        &8Only certain items can be destroyed.
+
+gui_stats:
+  # leave 6 rows, 5 first rows are used to show the inventory
+  rows: 6
+  layout:
+    - slot: 45
+      action: previous-player
+      type: ARROW
+      title: "&7Previous player"
+      description: |-
+        &7Cycle backwards to the previous player
+        &7who played in this match.
+    - slot: 53
+      action: next-player
+      type: ARROW
+      title: "&7Next player"
+      description: |-
+        &7Cycle forwards to the next player
+        &7who played in this match.
+    - slot: 48
+      title: "&eMatch statistics"
+      type: IRON_SWORD
+      description: |-
+        &eHits: &6{hits}
+        &eCombo: &6{combo}
+        &eLongest Combo: &6{longest-combo}
+    - slot: 49
+      title: "&eHealth: &c{hearts}/10"
+      type: SKULL_ITEM
+      description: "&7{player}'s health"
+    - slot: 50
+      type: POTION
+      type-data: 16389
+      title: "&ePotions"
+      description: |-
+        &d{potions-used} &7potions used.
+        &5{potions-left} &7potions left in inventory.

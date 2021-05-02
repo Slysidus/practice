@@ -1,0 +1,156 @@
+# mode id
+nodebuff:
+  # mode name
+  name: "NoDebuff"
+
+  # mode icon
+  type: POTION
+  type-data: 16389
+
+  # properties
+  terrain-mutable: false
+  regeneration: true
+  # no-damage-ticks: 20
+  # enderpearl-cooldown: 15
+  # fluid-kills: false
+
+  # arenas
+  arenas:
+    - Wood
+    - Industrial
+    - Fountain
+
+  # support vars
+  support:
+    ranked: true
+    unranked: true
+    single: true
+    double: true
+    duel: true
+
+  # default layout
+  # players can override the layout with custom kits
+  default-kit:
+    - slot: 39
+      type: DIAMOND_HELMET
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 2
+        - enchant: DURABILITY
+          level: 3
+    - slot: 38
+      type: DIAMOND_CHESTPLATE
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 2
+        - enchant: DURABILITY
+          level: 3
+    - slot: 37
+      type: DIAMOND_LEGGINGS
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 2
+        - enchant: DURABILITY
+          level: 3
+    - slot: 36
+      type: DIAMOND_BOOTS
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 2
+        - enchant: DURABILITY
+          level: 3
+
+    - slot: 0
+      type: DIAMOND_SWORD
+      enchants:
+        - enchant: DAMAGE_ALL
+          level: 4
+        - enchant: DURABILITY
+          level: 3
+    - slot: 1
+      type: ENDER_PEARL
+      amount: 16
+    - slot: 8
+      type: COOKED_BEEF
+      amount: 64
+    - fill: 20 # fill 20 available slots
+      type: POTION
+      type-data: 16389
+    - fill: 4
+      type: POTION
+      type-data: 8226
+
+  # additional items the player can pick
+  # the player can pick as many of them as he wishes to
+  # they will fill the empty slots in the kit editor first rows
+  additional-items:
+    # slot in the kit editor inventory
+    - type: POTION
+      type-data: 16389
+    - type: POTION
+      type-data: 8226
+    - type: GOLDEN_CARROT
+      amount: 64
+    - type: COOKED_BEEF
+      amount: 64
+
+  # whether custom kits can be created for this mode
+  allow-custom-kits: true
+
+combo:
+  name: "Combo"
+  type: RAW_FISH
+  type-data: 3
+  no-damage-ticks: 1
+  arenas:
+    - Wood
+  default-kit:
+    - slot: 39
+      type: DIAMOND_HELMET
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 3
+        - enchant: DURABILITY
+          level: 3
+    - slot: 38
+      type: DIAMOND_CHESTPLATE
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 3
+        - enchant: DURABILITY
+          level: 3
+    - slot: 37
+      type: DIAMOND_LEGGINGS
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 3
+        - enchant: DURABILITY
+          level: 3
+    - slot: 36
+      type: DIAMOND_BOOTS
+      enchants:
+        - enchant: PROTECTION_ENVIRONMENTAL
+          level: 3
+        - enchant: DURABILITY
+          level: 3
+    - slot: 0
+      type: DIAMOND_SWORD
+      enchants:
+        - enchant: DAMAGE_ALL
+          level: 4
+        - enchant: DURABILITY
+          level: 3
+    - slot: 1
+      type: GOLDEN_APPLE
+      type-data: 1
+      amount: 64
+
+build:
+  name: "Build UHC"
+  type: LAVA_BUCKET
+  terrain-mutable: true
+  enderpearl-cooldown: 5
+  fluid-kills: true
+  arenas:
+    - Fountain
+    - Wood

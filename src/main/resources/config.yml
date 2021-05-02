@@ -1,0 +1,18 @@
+mongodb-url: "mongodb+srv://<username>:<password>@<host>/practice?retryWrites=true&w=majority"
+
+hide-connect-messages: true
+
+arenas:
+  distance: 500
+end-teleport-time: 3
+
+elo-search:
+  start: 20
+  increase-interval: 15
+  increase: 10
+  # max diff
+  stop: 200
+
+# disabling the ping command only disables its handler
+# if no plugin is present, it will still show in the suggestions
+ping-command-enabled: true
