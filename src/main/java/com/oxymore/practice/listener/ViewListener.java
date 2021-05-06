@@ -125,6 +125,10 @@ public final class ViewListener implements Listener {
                     final ArenaConfiguration arena = arenaSelectorView.getSelectArenas().get(slot);
                     modeSelectorView.getCallback().onModeSelect(player, modeSelectorView.getMatchType(),
                             arenaSelectorView.getMatchMode(), arena.name);
+                } else if (slot == event.getClickedInventory().getSize() - 1) {
+                    player.closeInventory();
+                    modeSelectorView.getCallback().onModeSelect(player, modeSelectorView.getMatchType(),
+                            arenaSelectorView.getMatchMode(), null);
                 }
             } else if (inventoryHolder instanceof ModeSelectorView) {
                 final int slot = event.getSlot();
