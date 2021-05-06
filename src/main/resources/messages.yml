@@ -104,6 +104,7 @@ party:
   start-not-leader: "&cYou must be the leader to start a party match."
   event:
     not-enough-players: "&cNot enough players in the party to start this event."
+  prevent-boost: "&cTo start a ranked match with a party, party members must not outnumber the number of players required in one team.."
   command:
     invalid-usage: "&cInvalid command usage. Please see /{label} help."
     errors:

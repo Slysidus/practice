@@ -601,6 +601,13 @@ public final class MatchingController implements Match.MatchBroadcaster, ModeSel
         } else {
             players = Collections.singletonList(player);
         }
+
+        if (players instanceof PartyPlayerList && players.size() > matchQueue.getRequiredPlayers() / 2) {
+            plugin.getLocale().get("party.prevent-boost")
+                    .send(player);
+            return;
+        }
+
         plugin.getDatabaseController().async(db -> {
             final int elo;
             if (matchType.isRanked()) {
